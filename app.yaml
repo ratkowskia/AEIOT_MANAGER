@@ -17,7 +17,8 @@
 
 # [START django_app]
 application: apponear
-runtime: python27
+runtime: python-compat
+vm: true
 api_version: 1
 threadsafe: yes
 version: 1
