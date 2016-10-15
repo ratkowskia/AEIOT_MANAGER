@@ -91,29 +91,30 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 # [START db_setup]
-import os
-if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
+#import os
+#if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
     # Running on production App Engine, so use a Google Cloud SQL database.
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'HOST': '/cloudsql/apponear:djtesta',
-            'NAME': 'djtesta',
-            'USER': 'root',
-            'PASSWORD': 'qwerty45',
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': '/cloudsql/apponear:us-central1:djtesta2',
+        'NAME': 'djtesta',
+        'USER': '####',
+        'PASSWORD': '####',
+        'PORT': '3306',
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'djtesta',
-            'USER': 'djtesta',
-            'PASSWORD': 'qwerty45',
-            'HOST': 'localhost',
-            'PORT': '3306',
-        }
-    }
+}
+#else:
+#    DATABASES = {
+#        'default': {
+#            'ENGINE': 'django.db.backends.mysql',
+#            'NAME': 'djtesta',
+#            'USER': 'djtesta',
+#            'PASSWORD': 'qwerty45',
+#            'HOST': 'localhost',
+#            'PORT': '3306',
+#        }
+#    }
 # [END db_setup]
 
 # Internationalization
