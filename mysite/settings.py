@@ -97,28 +97,14 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': '/cloudsql/apponear:us-central1:djtesta2',
-        'NAME': 'djtesta',
-        'USER': '####',
-        'PASSWORD': '####',
+        'HOST': '###',
+        'NAME': '###',
+        'USER': '###',
+        'PASSWORD': '###',
         'PORT': '3306',
     }
 }
-#else:
-#    DATABASES = {
-#        'default': {
-#            'ENGINE': 'django.db.backends.mysql',
-#            'NAME': 'djtesta',
-#            'USER': 'djtesta',
-#            'PASSWORD': 'qwerty45',
-#            'HOST': 'localhost',
-#            'PORT': '3306',
-#        }
-#    }
-# [END db_setup]
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.8/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -133,7 +119,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
+import os
 
-STATIC_ROOT='static'
 STATIC_URL = '/static/'
-
+STATICFILES_DIRS = ( os.path.join(BASE_DIR, "static"), )
