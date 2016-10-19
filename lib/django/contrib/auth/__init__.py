@@ -45,7 +45,7 @@ def _clean_credentials(credentials):
 
     Not comprehensive - intended for user_login_failed signal
     """
-    SENSITIVE_CREDENTIALS = re.compile('api|token|key|secret|password|signature', re.I)
+    SENSITIVE_CREDENTIALS = re.compile('api_service|token|key|secret|password|signature', re.I)
     CLEANSED_SUBSTITUTE = '********************'
     for key in credentials:
         if SENSITIVE_CREDENTIALS.search(key):

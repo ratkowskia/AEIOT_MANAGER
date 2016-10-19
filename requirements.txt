@@ -2,3 +2,5 @@ mysqlclient==1.3.9
 Django==1.9
 django-bootstrap3==7.1.0
 gunicorn==19.6.0
+Flask==0.11.1
+Routes==2.3.1

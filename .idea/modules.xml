@@ -3,8 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/AEIOT_MANAGER.iml" filepath="$PROJECT_DIR$/.idea/AEIOT_MANAGER.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../AEIoT_AE/.idea/AEIoT_AE.iml" filepath="$PROJECT_DIR$/../AEIoT_AE/.idea/AEIoT_AE.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../AEIoT_API/.idea/AEIoT_API.iml" filepath="$PROJECT_DIR$/../AEIoT_API/.idea/AEIoT_API.iml" />
       <module fileurl="file://$PROJECT_DIR$/../AEIoT_API/.idea/untitled2.iml" filepath="$PROJECT_DIR$/../AEIoT_API/.idea/untitled2.iml" />
     </modules>
   </component>

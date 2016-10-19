@@ -26,4 +26,25 @@ import os
 from django.core.wsgi import get_wsgi_application
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
 
+
+
+
+#application = Flask(__name__)
+
+#@application.route('/flask')
+#def helloworld():
+#    return 'Hello, World! from flask'
+
+#@application.route('/')
+#def run_django():
+    #global application
+#    return get_wsgi_application()
+
+#if __name__ == '__main__':
+#    # This is used when running locally. Gunicorn is used to run the
+#    # application on Google App Engine. See entrypoint in app.yaml.
+#    application.run(host='127.0.0.1', port=8080, debug=True)
+
 application = get_wsgi_application()
+
+

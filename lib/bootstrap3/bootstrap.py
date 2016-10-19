@@ -37,7 +37,7 @@ BOOTSTRAP3_DEFAULTS = {
 # Start with a copy of default settings
 BOOTSTRAP3 = BOOTSTRAP3_DEFAULTS.copy()
 
-# Override with user settings from settings.py
+# Override with user settings from aeiotconf1.py
 BOOTSTRAP3.update(getattr(settings, 'BOOTSTRAP3', {}))
 
 

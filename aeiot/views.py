@@ -26,10 +26,13 @@ from django.views import generic
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
+from aeiotconf import SvcAddress
+
 
 
 # from django.contrib.auth.models import User
 # from django.views.generic.list import ListView
+
 
 
 class AlgorithmUpdate(generic.UpdateView):

@@ -1,0 +1,3 @@
+dispatch:
+- url: "*/test/*"
+  service: helloworld
