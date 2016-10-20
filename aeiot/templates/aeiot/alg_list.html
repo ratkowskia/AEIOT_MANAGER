@@ -15,7 +15,7 @@
 
    	         <table class="table table-striped">
         <thead>
-          <tr><th>name</th><th>semanticics</th><th>version</th><th>supplier</th><th>manage</th></tr>
+          <tr><th>name</th><th>semanticics</th><th>version</th><th>supplier</th><th>manage</th><th>execute</th></tr>
         </thead>
         <tbody>
             {% for algorithm in object_list %}
@@ -25,6 +25,7 @@
                 <td>{{ algorithm.version }}</td>
                 <td>{{ algorithm.supplier }}</td>
                 <td><a href="{% url 'aeiot:algorithm-delete' algorithm.id%}"><i class="glyphicon glyphicon-trash"></i></a></td>
+                <td><a href="{% url 'aeiot:algorithm-execute' algorithm.id%}"><i class="glyphicon glyphicon-play"></i></a></td>
             </tr>
             {% empty %}
                 <li>No articles yet.</li>

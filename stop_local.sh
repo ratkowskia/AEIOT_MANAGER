@@ -1,3 +1,3 @@
 #!/bin/bash
 
-killall -9 unicorn
+killall -9 gunicorn

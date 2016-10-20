@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^(?P<pk>[0-9]+)/algorithm/$', views.AlgorithmUpdate.as_view(), name='algorithm-update'),
     url(r'^profile/$', views.ProfileUpdate.as_view(), name='profile-update'),
     url(r'^(?P<pk>[0-9]+)/algorithm/delete/$', views.AlgorithmDelete.as_view(), name='algorithm-delete'),
+    url(r'^(?P<pk>[0-9]+)/algorithm/execute/$', views.AlgorithmExecute.as_view(), name='algorithm-execute'),
     url(r'^new/algorithm/$', views.AlgorithmCreate.as_view(), name='algorithm-create'),
 
 

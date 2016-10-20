@@ -3,13 +3,14 @@ from .models import Supplier, Consumer, DataFormat
 
 
 class AlgorithmDetailsForm(forms.Form):
-    name = forms.CharField(max_length=100)
-    semantics = forms.CharField(max_length=100)
+    #algorithm_id = forms.HiddenInput()
+    name = forms.CharField(max_length=100, required=False)
+    semantics = forms.CharField(max_length=100, required=False)
     source_code = forms.CharField(widget=forms.Textarea, required=False)
-    version = forms.EmailField()
-    supplier = forms.ModelChoiceField(queryset=Supplier.objects.all())
-    input_format = forms.ModelChoiceField(queryset=DataFormat.objects.all())
-    output_format = forms.ModelChoiceField(queryset=DataFormat.objects.all())
+    version = forms.EmailField(required=False)
+    supplier = forms.ModelChoiceField(queryset=Supplier.objects.all(), required=False)
+    input_format = forms.ModelChoiceField(queryset=DataFormat.objects.all(), required=False)
+    output_format = forms.ModelChoiceField(queryset=DataFormat.objects.all(), required=False)
 
 
     def save(self):

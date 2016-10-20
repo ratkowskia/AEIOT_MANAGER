@@ -4,3 +4,6 @@ django-bootstrap3==7.1.0
 gunicorn==19.6.0
 Flask==0.11.1
 Routes==2.3.1
+requests==2.11.1
+djangorestframework==3.4.7
+flask-restful==0.3.5

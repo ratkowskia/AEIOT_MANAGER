@@ -27,13 +27,25 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
 from aeiotconf import SvcAddress
+import logging
 
+logger = logging.getLogger(__name__)
 
 
 # from django.contrib.auth.models import User
 # from django.views.generic.list import ListView
 
+class AlgorithmExecute(generic.FormView):
+    template_name = 'aeiot/alg_detail.html'
+    form_class = AlgorithmDetailsForm
+    success_url = reverse_lazy('aeiot:algorithm-execute')
+    # form_class = AlgorithmDetailsForm
 
+    def form_valid(self, form):
+        logger.error('loger test ##########')
+
+        form.save()
+        return super(AlgorithmExecute, self).form_valid(form)
 
 class AlgorithmUpdate(generic.UpdateView):
     template_name = 'aeiot/alg_detail.html'
