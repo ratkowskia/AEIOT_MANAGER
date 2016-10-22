@@ -26,6 +26,10 @@ from django.views import generic
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
+from django.contrib.messages.views import SuccessMessageMixin
+from braces.views import FormMessagesMixin
+
+
 import logging
 from .aeendpoint import AEEndpoint
 
@@ -35,9 +39,11 @@ aeendpoint = AEEndpoint()
 # from django.contrib.auth.models import User
 # from django.views.generic.list import ListView
 
-class AlgorithmExecute(generic.FormView):
+class AlgorithmExecute(FormMessagesMixin, generic.FormView):
     template_name = 'aeiot/alg_execute.html'
     form_class = AlgorithmShortForm
+    form_valid_message = ""
+    form_invalid_message = ""
     #success_url = reverse_lazy('aeiot:algorithm-execute', kwargs={'pk': 118})
     # form_class = AlgorithmDetailsForm
     def get_initial(self):
@@ -49,9 +55,15 @@ class AlgorithmExecute(generic.FormView):
         return self.initial
 
     def form_valid(self, form):
-        aeendpoint.execute_algorithm(self.kwargs['pk'])
+        result = aeendpoint.execute_algorithm(self.kwargs['pk'])
+        algorithm = Algorithm.objects.get(id=self.kwargs['pk'])
         form.save()
+        if result == 201:
+            self.messages.success("Algorithm  %s sent to execution" % (algorithm.name))
+        else:
+            self.messages.error("Algorithm  %s did not sent to execution. Code %i" % (algorithm.name, result))
         return super(AlgorithmExecute, self).form_valid(form)
+
 
 class AlgorithmUpdate(generic.UpdateView):
     template_name = 'aeiot/alg_detail.html'
