@@ -26,6 +26,8 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.contrib.messages import constants as messages
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -84,6 +86,14 @@ TEMPLATES = [
     },
 ]
 
+MESSAGE_TAGS = {
+    messages.DEBUG: 'debug',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'danger' # 'error' by default
+}
+
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
@@ -97,11 +107,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': '###',
-        'NAME': '###',
-        'USER': '###',
-        'PASSWORD': '###',
-        'PORT': '3306',
+        #'HOST': '####',
+        'HOST': '####',
+        'NAME': '####',
+        'USER': '####',
+        'PASSWORD': '####',
+        'PORT': '####',
     }
 }
 
