@@ -16,7 +16,7 @@ from django.http import HttpResponse
 
 from django.utils.datastructures import MultiValueDictKeyError
 from .models import Choice, Question, Algorithm, Supplier
-from .forms import AlgorithmDetailsForm, ProfileForm, AlgorithmSearch
+from .forms import AlgorithmDetailsForm, ProfileForm, AlgorithmSearch, AlgorithmShortForm
 from django.shortcuts import render, get_object_or_404
 from django.http import Http404, HttpResponseRedirect
 # need to upgrade django to 1.10, workaround instead of upgrade
@@ -26,24 +26,30 @@ from django.views import generic
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
-from aeiotconf import SvcAddress
 import logging
+from .aeendpoint import AEEndpoint
 
 logger = logging.getLogger(__name__)
 
-
+aeendpoint = AEEndpoint()
 # from django.contrib.auth.models import User
 # from django.views.generic.list import ListView
 
 class AlgorithmExecute(generic.FormView):
-    template_name = 'aeiot/alg_detail.html'
-    form_class = AlgorithmDetailsForm
-    success_url = reverse_lazy('aeiot:algorithm-execute')
+    template_name = 'aeiot/alg_execute.html'
+    form_class = AlgorithmShortForm
+    #success_url = reverse_lazy('aeiot:algorithm-execute', kwargs={'pk': 118})
     # form_class = AlgorithmDetailsForm
+    def get_initial(self):
+        algorithm = Algorithm.objects.get(id=self.kwargs['pk'])
+        self.initial['name'] = algorithm.name
+        self.initial['semantics'] = algorithm.semantics
+        self.success_url = reverse_lazy('aeiot:algorithm-execute', kwargs={'pk': self.kwargs['pk']})
+
+        return self.initial
 
     def form_valid(self, form):
-        logger.error('loger test ##########')
-
+        aeendpoint.execute_algorithm(self.kwargs['pk'])
         form.save()
         return super(AlgorithmExecute, self).form_valid(form)
 

@@ -17,7 +17,15 @@ class AlgorithmDetailsForm(forms.Form):
         return
 
 
+class AlgorithmShortForm(forms.Form):
+    pk = forms.HiddenInput()
+    name = forms.CharField(max_length=100, required=False)
+    semantics = forms.CharField(max_length=100, required=False)
+    input_format = forms.ModelChoiceField(queryset=DataFormat.objects.all(), required=False)
+    output_format = forms.ModelChoiceField(queryset=DataFormat.objects.all(), required=False)
 
+    def save(self):
+        return
 
 
 class ProfileForm(forms.Form):
